@@ -22,7 +22,7 @@ const variants = {
   hidden: {opacity: 0},
   visible: {opacity: 1}
 }
-function AnimeCard({ anime }: Prop) {
+function AnimeCard({ anime, index }: Prop) {
   return (
     <MotionDiv
         className="max-w-sm rounded relative w-full"
@@ -30,18 +30,17 @@ function AnimeCard({ anime }: Prop) {
         initial="hidden"
         animate="visible"
         transition={{
-          delay: 1,
+          delay: index * 0.25,
           ease: 'easeInOut',
           duration: .5,
         }}
         viewport={{amount: 0}}
     >
-      <div className="relative w-full h-[37vh]">
+      <div className="relative w-full h-[37vh] xl:h-[20vh]">
         <Image
           src={`https://shikimori.one${anime.image.original}`}
           alt={anime.name}
           fill
-          sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="rounded-xl"
         />
       </div>
